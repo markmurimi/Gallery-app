@@ -33,15 +33,7 @@ def past_days_images(request,past_date):
 
     if date == dt.date.today():
         return redirect(images_today)
-
-    return render(request, 'all-images/past-images.html', {"date": date})
+    images = Post.days_images(date)
+    return render(request, 'all-images/past-images.html', {"date": date, "images":images})
     
-    day = convert_dates(date)
-    html = f'''
-        <html>
-            <body>
-                <h1>News for {day} {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+    
