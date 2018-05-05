@@ -1,5 +1,10 @@
 from django.db import models
+from django.contrib import admin
+from .models import Editor,Post,tags
 
+admin.site.register(Editor)
+admin.site.register(Post)
+admin.site.register(tags)
 # Create your models here.
 class Editor(models.Model):
     first_name = models.CharField(max_length =30)
@@ -8,8 +13,12 @@ class Editor(models.Model):
 
     def __str__(self):
         return self.first_name
-    class Meta:
-        ordering = ['first_name']
+    
+    def save_editor(self):
+        self.save() 
+
+class Meta:
+    ordering = ['first_name']
 
 class tags(models.Model):
     name = models.CharField(max_length =30)
