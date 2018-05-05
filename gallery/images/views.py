@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import datetime as dt
 from django.http  import HttpResponse,Http404
+from django.shortcuts import render,redirect
 # Create your views here.
 
 def welcome(request):
@@ -19,16 +20,9 @@ def images_of_day(request):
             '''
     return HttpResponse(html)
 
-def convert_dates(dates):
-
-    # Function that gets the weekday number for the date.
-    day_number = dt.date.weekday(dates)
-
-    days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday',"Sunday"]
-
-    # Returning the actual day of the week
-    day = days[day_number]
-    return day
+def images_today(request):
+    date = dt.date.today()
+    return render(request, 'all-images/today-images.html', {"date": date,})
 
 def past_days_images(request,past_date):
         # Converts data from the string Url
@@ -37,6 +31,11 @@ def past_days_images(request,past_date):
 
     except ValueError:
         raise Http404()
+        assert False
+    if date == dt.date.today():
+        return redirect(images_today)
+
+    return render(request, 'all-images/past-images.html', {"date": date})
 
     day = convert_dates(date)
     html = f'''
