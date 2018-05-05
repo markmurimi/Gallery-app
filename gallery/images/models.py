@@ -10,3 +10,14 @@ class Editor(models.Model):
         return self.first_name
     class Meta:
         ordering = ['first_name']
+
+class tags(models.Model):
+    name = models.CharField(max_length =30)
+
+    def __str__(self):
+        return self.name
+
+class Post(models.Model):
+    title = models.CharField(max_length =60)
+    editor = models.ForeignKey(Editor)
+    tags = models.ManyToManyField(tags)
