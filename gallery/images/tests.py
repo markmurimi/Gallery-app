@@ -10,3 +10,9 @@ class EditorTestClass(TestCase):
     # Testing  instance
     def test_instance(self):
         self.assertTrue(isinstance(self.Ramza,Editor))
+
+    # Testing Save Method
+    def test_save_method(self):
+        self.Ramza.save_editor()
+        editors = Editor.objects.all()
+        self.assertTrue(len(editors) > 0)
