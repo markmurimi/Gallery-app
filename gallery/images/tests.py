@@ -33,6 +33,10 @@ class PostTestClass(TestCase):
 
         self.new_article.tags.add(self.new_tag)
 
+def test_get_images_today(self):
+        today_images = Post.todays_images()
+        self.assertTrue(len(today_images)>0)
+
     def tearDown(self):
         Editor.objects.all().delete()
         tags.objects.all().delete()
