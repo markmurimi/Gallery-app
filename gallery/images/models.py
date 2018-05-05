@@ -33,3 +33,8 @@ class Post(models.Model):
         today = dt.date.today()
         images = cls.objects.filter(pub_date__date = today)
         return images
+
+@classmethod
+    def days_images(cls,date):
+        images = cls.objects.filter(pub_date__date = date)
+        return images

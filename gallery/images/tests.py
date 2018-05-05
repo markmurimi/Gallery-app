@@ -37,6 +37,12 @@ def test_get_images_today(self):
         today_images = Post.todays_images()
         self.assertTrue(len(today_images)>0)
 
+def test_get_images_by_date(self):
+        test_date = '2017-03-17'
+        date = dt.datetime.strptime(test_date, '%Y-%m-%d').date()
+        images_by_date = Post.days_images(date)
+        self.assertTrue(len(images_by_date) == 0)
+
     def tearDown(self):
         Editor.objects.all().delete()
         tags.objects.all().delete()

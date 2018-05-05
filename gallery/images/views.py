@@ -8,7 +8,8 @@ def welcome(request):
 
 def images_today(request):
     date = dt.date.today()
-    return render(request, 'all-images/today-images.html', {"date": date,})
+    images = Post.todays_images()
+    return render(request, 'all-images/today-images.html', {"date": date,"images":images})
 
 def convert_dates(dates):
 
