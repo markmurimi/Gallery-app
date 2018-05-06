@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Editor,Post,tags
+from .models import Editor,Post
 # Create your tests here.
 class EditorTestClass(TestCase):
 
@@ -24,14 +24,8 @@ class PostTestClass(TestCase):
         self.Ramza= Editor(first_name = 'Ramza', last_name ='Reseni', email ='Ramza@moringaschool.com')
         self.Ramza.save_editor()
 
-        # Creating a new tag and saving it
-        self.new_tag = tags(name = 'testing')
-        self.new_tag.save()
-
         self.new_post= Post(title = 'Test Post',post = 'This is a random test Post',editor = self.Ramza)
         self.new_post.save()
-
-        self.new_post.tags.add(self.new_tag)
 
 def test_get_images_today(self):
         today_images = Post.todays_images()
@@ -45,5 +39,4 @@ def test_get_images_by_date(self):
 
 def tearDown(self):
     Editor.objects.all().delete()
-    tags.objects.all().delete()
     Post.objects.all().delete()
