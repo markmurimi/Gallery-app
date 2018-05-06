@@ -13,7 +13,8 @@ Locate my GitHub Repository or follow this link [repo](https://github.com/markmu
 
 ## Running the app
 You run the app in your app folder on the terminal by running the following command:
-* $ Python3.6 manage.py runserver
+* $ Python3.6 manage.py runserver.
+
 After this a link will be displayed on the terminal which is the link to your app.
 
 ## Running the tests
