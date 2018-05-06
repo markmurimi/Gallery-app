@@ -38,3 +38,8 @@ def todays_images(cls):
 def days_images(cls,date):
     images = cls.objects.filter(pub_date__date = date)
     return images
+
+@classmethod
+def search_by_title(cls,search_term):
+    images = cls.objects.filter(title__icontains=search_term)
+    return images
