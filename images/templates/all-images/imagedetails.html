@@ -1,0 +1,8 @@
+{%extends 'all-images/base.html'%} 
+{% block content %}
+<div class="container">
+    <img src="{{post.post_image.url}}"  class="img-responsive" alt="">
+        <p>Posted {{post.pub_date}} by {{post.editor.first_name}}</p>
+    <h1 class="text-center">{{post.title}}</h1>
+</div>
+{% endblock %}

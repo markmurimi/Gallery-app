@@ -57,3 +57,6 @@ def post(request,post_id):
     except DoesNotExist:
         raise Http404()
     return render(request,"all-images/post.html", {"post":post})
+
+def image_details(request):
+    return render(request,"all-images/imagedetails.html")
