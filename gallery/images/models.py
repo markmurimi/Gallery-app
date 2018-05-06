@@ -24,6 +24,7 @@ class Post(models.Model):
     editor = models.ForeignKey(Editor)
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
+    post_image = models.ImageField(upload_to = 'posts/')
 
     @classmethod
     def todays_images(cls):
