@@ -28,10 +28,10 @@ class PostTestClass(TestCase):
         self.new_tag = tags(name = 'testing')
         self.new_tag.save()
 
-        self.new_article= Article(title = 'Test Article',post = 'This is a random test Post',editor = self.Ramza)
-        self.new_article.save()
+        self.new_post= Post(title = 'Test Post',post = 'This is a random test Post',editor = self.Ramza)
+        self.new_post.save()
 
-        self.new_article.tags.add(self.new_tag)
+        self.new_post.tags.add(self.new_tag)
 
 def test_get_images_today(self):
         today_images = Post.todays_images()
@@ -43,7 +43,7 @@ def test_get_images_by_date(self):
         images_by_date = Post.days_images(date)
         self.assertTrue(len(images_by_date) == 0)
 
-    def tearDown(self):
-        Editor.objects.all().delete()
-        tags.objects.all().delete()
-        Post.objects.all().delete()
+def tearDown(self):
+    Editor.objects.all().delete()
+    tags.objects.all().delete()
+    Post.objects.all().delete()

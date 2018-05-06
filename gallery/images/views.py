@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 import datetime as dt
 from django.http  import HttpResponse,Http404
+from .models import Post
 # Create your views here.
 
 def welcome(request):
@@ -33,6 +34,7 @@ def past_days_images(request,past_date):
 
     if date == dt.date.today():
         return redirect(images_today)
+        
     images = Post.days_images(date)
     return render(request, 'all-images/past-images.html', {"date": date, "images":images})
     

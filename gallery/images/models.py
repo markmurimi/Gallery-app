@@ -29,12 +29,12 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
 
 @classmethod
-    def todays_images(cls):
-        today = dt.date.today()
-        images = cls.objects.filter(pub_date__date = today)
-        return images
+def todays_images(cls):
+    today = dt.date.today()
+    images = cls.objects.filter(pub_date__date = today)
+    return images
 
 @classmethod
-    def days_images(cls,date):
-        images = cls.objects.filter(pub_date__date = date)
-        return images
+def days_images(cls,date):
+    images = cls.objects.filter(pub_date__date = date)
+    return images
