@@ -13,9 +13,6 @@ class Editor(models.Model):
     def save_editor(self):
         self.save() 
 
-    class Meta:
-        ordering = ['first_name']
-
 class tags(models.Model):
     name = models.CharField(max_length =30)
 
@@ -28,18 +25,18 @@ class Post(models.Model):
     tags = models.ManyToManyField(tags)
     pub_date = models.DateTimeField(auto_now_add=True)
 
-@classmethod
-def todays_images(cls):
-    today = dt.date.today()
-    images = cls.objects.filter(pub_date__date = today)
-    return images
+    @classmethod
+    def todays_images(cls):
+        today = dt.date.today()
+        images = cls.objects.filter(pub_date__date = today)
+        return images
 
-@classmethod
-def days_images(cls,date):
-    images = cls.objects.filter(pub_date__date = date)
-    return images
+    @classmethod
+    def days_images(cls,date):
+        images = cls.objects.filter(pub_date__date = date)
+        return images
 
-@classmethod
-def search_by_title(cls,search_term):
-    images = cls.objects.filter(title__icontains=search_term)
-    return images
+    @classmethod
+    def search_by_title(cls,search_term):
+        images = cls.objects.filter(title__icontains=search_term)
+        return images
