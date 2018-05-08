@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 import datetime as dt
 from django.http  import HttpResponse,Http404
 from .models import Post
@@ -23,11 +23,12 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
-def past_days_images(request,past_date):
+def past_days_images(request):
         # Converts data from the string Url
     try:
-        date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
-
+        # date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
+        images = Post.objects.filter(pub_date__year='2011',pub_date__month='01',pub_date__day='01')
+        return render(request, 'all-images/past-images.html', {'images':images})
     except ValueError:
         raise Http404()
         assert False
