@@ -52,12 +52,13 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-images/search.html',{"message":message})
     
-def post(request,post_id):
+def post(request,image_id):
     try:
-        post = Post.objects.get(id = post_id)
+        post = Post.objects.get(id = image_id)
     except DoesNotExist:
         raise Http404()
     return render(request,"all-images/post.html", {"post":post})
 
 def image_details(request):
-    return render(request,"all-images/imagedetails.html")
+    photo = Post.objects.get()
+    return render(request,"all-images/imagedetails.html",{'photo':photo})

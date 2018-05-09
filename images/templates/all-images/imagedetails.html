@@ -2,6 +2,11 @@
 {% block content %}
 <div class="container">
         
-    <h1 class="text-center">Details.</h1>
+    <h1 class="text-center" style="text-decoration: underline">Details.</h1>
+    <img src="{{images_item.post_image.url}}" class="img-responsive" alt="Image">
+    <h2>{{photo.descripton}}.</h2>
+    <h2> Location-Taken: {{photo.location_taken}}.</h2>
+    <h2>Posted By: {{photo.editor}}.</h2>
+    <p>Click Gallery to go home.</p>
 </div>
 {% endblock %}
