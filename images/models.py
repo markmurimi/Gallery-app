@@ -33,11 +33,14 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     post_image = models.ImageField(upload_to = 'posts/')
     descripton = models.TextField()
-    image_id = models.CharField(max_length = 10)
+    image_id = models.CharField(max_length = 30)
     location_taken = models.ForeignKey(Location)
+    
+    def __str__(self):
+        return self.title
 
     @classmethod
-    def todays_images(cls):
+    def all_images(cls):
         today = dt.date.today()
         images = cls.objects.filter(pub_date__date = today)
         return images

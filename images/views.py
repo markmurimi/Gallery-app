@@ -43,6 +43,11 @@ def post(request,post_id):
         raise Http404()
     return render(request,"all-images/post.html", {"post":post})
 
+def all_images(request):
+    images = Post.all_images()
+    return render(request, 'all_images.html', {"images":images})
+
+
 def image_details(request, post_id):
     photo = Post.objects.get(id=post_id)
     return render(request,"all-images/imagedetails.html",{'photo':photo})

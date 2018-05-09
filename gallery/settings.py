@@ -124,5 +124,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATICFILES_STORAGE ='whitenoise.django.GzipManifestStaticFilesStorage'
 DATABASES['default'].update(db_from_env)
 
-import django_heroku
-django_heroku.settings(locals())

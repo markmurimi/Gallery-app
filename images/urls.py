@@ -4,10 +4,9 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns=[
-    url(r'^$',views.images_today,name='imagesToday'),
+    url(r'^$', views.all_images, name='allImages'),
     url(r'^post/(\d+)',views.post,name ='post'),
     url(r'^search/', views.search_results, name='search_results'),
-    # url(r'^details/(?P<image_id>)/$', views.image_details, name='image_details')
     url(r'^details/(\d{1})/$', views.image_details, name='image_details'),
 ]
 if settings.DEBUG:
