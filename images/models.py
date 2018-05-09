@@ -33,7 +33,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     post_image = models.ImageField(upload_to = 'posts/')
     descripton = models.TextField()
-    image_id = models.CharField(max_length =10)
+    image_id = models.CharField(max_length = 10)
     location_taken = models.ForeignKey(Location)
 
     @classmethod
@@ -52,5 +52,3 @@ class Post(models.Model):
         images = cls.objects.filter(title__icontains=search_term)
         return images
 
-class Post_id(models.Model):
-    post_id = models.ForeignKey(Post)

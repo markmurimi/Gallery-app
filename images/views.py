@@ -23,22 +23,6 @@ def convert_dates(dates):
     day = days[day_number]
     return day
 
-def past_days_images(request):
-        # Converts data from the string Url
-    try:
-        # date = dt.datetime.strptime(past_date,'%Y-%m-%d').date()
-        images = Post.objects.filter(pub_date__year='2011',pub_date__month='01',pub_date__day='01')
-        return render(request, 'all-images/past-images.html', {'images':images})
-    except ValueError:
-        raise Http404()
-        assert False
-
-    if date == dt.date.today():
-        return redirect(images_today)
-
-    images = Post.days_images(date)
-    return render(request, 'all-images/past-images.html', {"date": date, "images":images})
-
 def search_results(request):
 
     if 'post' in request.GET and request.GET["post"]:
@@ -52,13 +36,13 @@ def search_results(request):
         message = "You haven't searched for any term"
         return render(request, 'all-images/search.html',{"message":message})
     
-def post(request,image_id):
+def post(request,post_id):
     try:
-        post = Post.objects.get(id = image_id)
+        post = Post.objects.get(id = post_id)
     except DoesNotExist:
         raise Http404()
     return render(request,"all-images/post.html", {"post":post})
 
-def image_details(request):
-    photo = Post.objects.get()
+def image_details(request, post_id):
+    photo = Post.objects.get(id=post_id)
     return render(request,"all-images/imagedetails.html",{'photo':photo})
